@@ -24,7 +24,7 @@ public class FortuneTellerFrame extends JFrame {
 
     Random rnd = new Random();
 
-    int prevFortune = -1;
+
 
     ArrayList<String> fortunes = new ArrayList<>();
 
@@ -115,8 +115,8 @@ public class FortuneTellerFrame extends JFrame {
     private String getFortune() {
         ArrayList<String> fortunes = new ArrayList<>();
 
+        int prevFortune;
         int fortune;
-        final int FORTUNES = 12;
 
         fortunes.add("Whatever your wish is... it's a no from me dog!");
         fortunes.add("When you wish upon a shooting star... just pray that you don't fart");
@@ -131,16 +131,14 @@ public class FortuneTellerFrame extends JFrame {
         fortunes.add("Never gonna give you up, never gonna let you down, never gonna run around and hurt you!");
         fortunes.add("When life gives you lemons, hit someone with those lemons... you'll feel better!");
 
-        if(prevFortune != -1) {
-            fortune = rnd.nextInt(0,FORTUNES);
-            if (fortune >= prevFortune) {
-                fortune++;
-            }
-        }
-        else {
-            fortune = rnd.nextInt(FORTUNES);
-        }
+        fortune = rnd.nextInt(fortunes.size());
+        prevFortune = fortune - 1;
 
-        prevFortune = fortune;
-    return fortunes.get(fortune);}
-}
+        if (fortune != prevFortune) {
+            return fortunes.get(fortune);
+        } else {
+            fortune++;
+            return fortunes.get(fortune);
+        }
+    }
+ }
