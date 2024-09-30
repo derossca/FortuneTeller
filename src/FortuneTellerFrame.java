@@ -89,7 +89,7 @@ public class FortuneTellerFrame extends JFrame {
         fortuneBtn.setFont(new Font("Time New Roman", Font.PLAIN, 18));
         fortuneBtn.addActionListener(e -> {
             String fortune = getFortune();
-            displayTA.setText(fortune);
+            displayTA.append(fortune + "\n");
         });
 
         quitBtn = new JButton("Quit");
